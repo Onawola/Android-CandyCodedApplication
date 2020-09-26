@@ -61,6 +61,19 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
+        private void createShareIntent(){
+                Intent shareIntent = new Intent(ACTION_SEND);
+                shareIntent.setType("text/plain");
+                String concatString = SHARE_DESCRIPTION + mCandyImageUrl + HASHTAG_CANDYCODED;
+                shareIntent.putExtra(Intent.EXTRA_TEXT, concatString);
+                startActivity(shareIntent);
+        }
+
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        createShareIntent();
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
